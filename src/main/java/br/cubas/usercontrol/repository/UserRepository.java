@@ -1,20 +1,21 @@
 package br.cubas.usercontrol.repository;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.data.jpa.repository.JpaRepository;
+//import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Repository;
 
-import br.cubas.usercontrol.beans.Role;
 import br.cubas.usercontrol.beans.User;
 
 @Repository
-public class UserRepository {
+public interface UserRepository extends JpaRepository<User, Long>  {
 	
-	List<User> users = new ArrayList<>();
+	public User findByUsername(String username);
 
+	
+	/*
+	List<User> users = new ArrayList<>();
+	
+	
 	UserRepository() {
 		
 		PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
@@ -58,4 +59,5 @@ public class UserRepository {
 		return users;
 	}
 
+	*/
 }

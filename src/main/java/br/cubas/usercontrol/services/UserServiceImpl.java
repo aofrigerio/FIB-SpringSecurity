@@ -9,6 +9,7 @@ import br.cubas.usercontrol.beans.Role;
 import br.cubas.usercontrol.beans.User;
 import br.cubas.usercontrol.repository.UserRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -25,7 +26,11 @@ public class UserServiceImpl implements UserService {
     public void save(User user) {
     	
     	user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-        user.getRoles().add(new Role("ROLE_BASIC"));
+    	
+    	Role role = new Role("ROLE_BASIC");
+        user.getRoles().add(role);
+        role.setUser(user);
+        
         userRepository.save(user);
     }
 

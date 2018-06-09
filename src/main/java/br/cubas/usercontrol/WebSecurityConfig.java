@@ -25,6 +25,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
+		
+		// HABILITA O FRAME DO H2-CONSOLE
+		http.headers().frameOptions().disable();
+
+		
 		http.csrf().disable() //
 				.authorizeRequests()
 				.antMatchers(HttpMethod.GET, "/user/registration").permitAll() 

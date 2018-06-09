@@ -11,8 +11,10 @@ public class Role {
 	@Id
 	@GeneratedValue
 	private Long id;
-	
+		
 	String role;
+	
+	public Role() { }
 	
 	@ManyToOne
 	private User user;
@@ -34,6 +36,7 @@ public class Role {
 	public String toString() {
 		return "Role [role=" + role + "]";
 	}
+
 
 	public Long getId() {
 		return id;
